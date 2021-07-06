@@ -17,3 +17,13 @@ As a user I want to find restaurants in a specific location So that I can find t
 * WHEN both values are entered and the submit button is preset it will take you two the seond page which displays the 5 top rated restaurants and show the distance between
 * WHEN the user clicks on the card showing the search results THEN the card expands to show the location on the map
 * When the user clicks on the map THEN it will take you to the google maps application
+
+## Framework used 
+
+* materialize
+* jQuery 
+* Google Fonts 
+
+## Server Side APIs 
+
+* Google Maps APIs
