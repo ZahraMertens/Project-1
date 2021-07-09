@@ -10,17 +10,26 @@ body {
 header {
     display: flex;
     text-align: center;
-    background-image: linear-gradient(to right, rgb(255, 0, 0) , rgb(61, 255, 181));
+    background-image: red;
 }
 
 .app-title {
     font-size: 60px;
+    font-weight: bolder;
     text-align: center;
     font-family: 'Tourney', cursive;
     padding-top: 30px;
     padding-bottom: 30px;
     margin: auto;
-    
+}
+
+.app-subheader {
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Tourney', cursive;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: auto;
 }
 
 main {
