@@ -1,25 +1,25 @@
 
-function getWeather () {
+var searchButton = $(".search-button");
+var inputNetwork = $("input.autocomplete");
+var nameInput = $("#name");
 
-    var apiUrl = ""
-  
-  
-    //Get data for main card 
-    fetch(apiUrl)
-      .then(function (response) {
-        if (response.ok) {
-          console.log(response);
-          response.json().then(function (data) {
-            console.log(data);
-           
-          });
-        } else {
-          alert('Error: ' + response.statusText);
-        }
-      })
-      .catch(function (error) {
-        alert('City does not exist!');
-    });
+//Autocomplete dropdown for social media networks
+$(document).ready(function(){
+  $('input.autocomplete').autocomplete({
+    data: {
+      "Instagram": null,
+      "Twitter": null,//Maybe Icon
+    }, 
+  })
+});
+
+function goResult (event) {
+  event.preventDefault();
+
+  var name = $("#name").text().trim();
+  console.log(name)
+  //window.location.replace("./result.html")
 }
 
-getWeather();
+searchButton.on("click", goResult);
+
