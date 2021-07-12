@@ -1,40 +1,55 @@
 
 var searchButton = $(".search-button");
-var inputNetwork = $("input.autocomplete");
+var inputIngredients = $("#autocomplete-input");
 var nameInput = $("#name");
 
-//Autocomplete dropdown for social media networks
+//Autocomplete dropdown for ingredients
+
 $(document).ready(function(){
-  $('input.autocomplete').autocomplete({
+  $('#autocomplete-input').autocomplete({
     data: {
-      "Instagram": null,
-      "Twitter": null,//Maybe Icon
+      //Ingredient lists--TO DO
     }, 
   })
 });
 
-function goResult (event) {
-  event.preventDefault();
+// Saving cocktail list in search
 
-  var name = $("#name").text().trim();
-  console.log(name)
-  window.location.replace("./result.html")
+var listCocktails = [];
+
+function storeCocktails() {
+  localStorage.setItem("cocktails", JSON.stringify(listCocktails));
 }
 
-searchButton.on("click", goResult);
+var formSubmitHandler = function (event) {
+  event.preventDefault();
+
+  var cocktailName = inputIngredients.value.trim();
+
+  if (cocktailName) {
+    
+    getCocktailList(cocktailName);
+
+    
+  } else {
+    alert('Please enter an Ingredient'); // NEED TO USE MODALS HERE
+  }
+};
 
 // api call for the cocktails by ingredients
-const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin",//Type.. by ingredient
+Var cocktailName = function (ingredient) {
+  
+
+   fetch("https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + ingredient, {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "1a928d218emshf7ad00a62d285c5p1294e1jsn511010a300bf",
 		"x-rapidapi-host": "the-cocktail-db.p.rapidapi.com"
-	}
+	 }
+  })
+     .then(function (response) {
+      if (response.ok) {
+        window.location.replace("./result.html");
+        
 };
-
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});
+ 
