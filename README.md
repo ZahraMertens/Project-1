@@ -1,22 +1,22 @@
 ## General Information
 
 ```
-As a user I want to find restaurants in a specific location So that I can find the best rated ones.
+As a user I want to find cocktail recipes depending on their ingredient types So that I can make cocktails.
 
 ```
 ## Brainstorming
 
-* HTML page which includes a search bar to search a specific city and postcode
-* A second HTML page will show the best 5 results 
-* A link at the end of the listed items gives the option to view more results 
-* Ones the results are shown on the webpage if we click on the li element a marker will appear on the google map marker 
+* HTML page which includes a search bar to search an ingredient for said cocktail
+* A second HTML page will show the first 10 results, with a next button to load the next 10 results
+* Clicking on an item presents the user with a recipe for the selected item
+* POSSIBLE EXTENSION: youtube video embedding for how to make
 
 ## Acceptance Criteria
 
-* WHEN the page loads the user can see a form element with input fields with the option to search the city(location) and post code
-* WHEN both values are entered and the submit button is preset it will take you two the seond page which displays the 5 top rated restaurants and show the distance between
-* WHEN the user clicks on the card showing the search results THEN the card expands to show the location on the map
-* When the user clicks on the map THEN it will take you to the google maps application
+* WHEN the page loads, I am presented with a search bar prompting a particular ingredient, and a button
+* WHEN the search field is filled and the button pressed, the HTML page will change to the results page showing the top results from the list
+* WHEN the user clicks on an item in said list, they are presented with a recipe for the item
+* EXTENSION: When the user clicks on the item, they are presented with a recipe AND a youtube video describing process
 
 ## Framework used 
 
@@ -24,6 +24,4 @@ As a user I want to find restaurants in a specific location So that I can find t
 * jQuery 
 * Google Fonts 
 
-## Server Side APIs 
-
-* Google Maps APIs
+## 
