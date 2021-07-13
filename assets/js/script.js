@@ -16,12 +16,14 @@ $(document).ready(function(){
 });
 
 
+//When button clicked get input value
 function handleSubmit (event){
   event.preventDefault();
 
   var ingredient = $("#autocomplete-input").val().trim()
   console.log(ingredient);
 
+  //If there is an input the function gets executed
   if (ingredient) {
     setLocalStorage(ingredient);
     $("#autocomplete-input").val("");
@@ -30,6 +32,7 @@ function handleSubmit (event){
   }
 };
 
+//Set local storage
 function setLocalStorage (ingredient) {
   
   var input = JSON.stringify(ingredient);
@@ -40,5 +43,5 @@ function setLocalStorage (ingredient) {
 };
 
 
-
+//On click button
 searchButton.on("click", handleSubmit);

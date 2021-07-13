@@ -4,6 +4,7 @@ var ulEl = $(".ul-container");
 var resultContainer = $(".result")
 var fullContainer = $(".result-container");
 
+//Get local storage to be able to fetch the data
 function getLocalStorage (){
 
 	var ingredient = localStorage.getItem("ingredient");
@@ -12,18 +13,15 @@ function getLocalStorage (){
 	cocktailName(ingredient);
 }
 
+//Go back function
 function goBackFunction (event){
   event.preventDefault();
 
   window.location.replace("./index.html");
 }
 
-getLocalStorage();
-goBack.on("click", goBackFunction);
-//searchButton.on("click", handleSubmit);
 
-
-// api call for the cocktails by ingredients
+//Api call to get data 
 function cocktailName(ingredient) {
   
 	var urlName = "https://the-cocktail-db.p.rapidapi.com/filter.php?i=" + ingredient;
@@ -42,6 +40,7 @@ function cocktailName(ingredient) {
 		  console.log(response);
 		  response.json().then(function (data) {
 			console.log(data);
+			//Display data function
 			displayNames(data, ingredient);
 			
 		  });
@@ -55,7 +54,8 @@ function cocktailName(ingredient) {
 
 };
 
-function displayNames(data, ingredient) {
+//Display data function
+function displayNames (data, ingredient) {
 	
 	if (data.length === 0) {
 		ulEl.text("No Cocktails found!")
@@ -70,6 +70,7 @@ function displayNames(data, ingredient) {
 	var names = data.drinks;
 	console.log(names)
 
+	//Trying to access data still struggeling................................
 	//for (var i = 0; i < Names.length; i++){
 		
 		var cocktailName = data.drinks[0].strDrink;
@@ -77,3 +78,11 @@ function displayNames(data, ingredient) {
 	//}
 
 }
+
+//get local storage function
+getLocalStorage();
+
+//Go back button
+goBack.on("click", goBackFunction);
+//searchButton.on("click", handleSubmit);
+
