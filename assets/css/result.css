@@ -92,3 +92,11 @@ footer {
     color: black;
 }
 
+.image-size {
+    width: 100px;
+    height: 100px;
+}
+
+.card-cocktail {
+    display: block!important;
+}
