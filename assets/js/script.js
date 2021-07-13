@@ -15,53 +15,30 @@ $(document).ready(function(){
   })
 });
 
-// Saving cocktail list in search
-function searchMechanic() {  
-  var inputIngredients = document.getElementById("autocomplete-input").value;
-function storeCocktails() {
-  localStorage.setItem("cocktails", JSON.stringify(listCocktails));
-}
 
-var formSubmitHandler = function (event) {
-  //event.preventDefault();
+function handleSubmit (event){
+  event.preventDefault();
 
-  var cocktailName = inputIngredients;
-  ingredient = cocktailName;
+  var ingredient = $("#autocomplete-input").val().trim()
+  console.log(ingredient);
 
-  if (cocktailName) {
-    
-    // was blocking code, had to comment
-    // getCocktailList(cocktailName);
-
-    
+  if (ingredient) {
+    setLocalStorage(ingredient);
+    $("#autocomplete-input").val("");
   } else {
-    alert('Please enter an Ingredient'); // NEED TO USE MODALS HERE
+    //modal ingredient not found
   }
 };
 
-// api call for the cocktails by ingredients
-function cocktailName(ingredient) {
+function setLocalStorage (ingredient) {
   
-
-   fetch(`https://the-cocktail-db.p.rapidapi.com/filter.php?i=${ingredient}`, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "1a928d218emshf7ad00a62d285c5p1294e1jsn511010a300bf",
-		"x-rapidapi-host": "the-cocktail-db.p.rapidapi.com"
-	 }
-  })
-     .then(function (response) {
-      if (response.ok) {
-      window.location.replace("./result.html");  
-        };  
-      }) .then (function(data){
-          console.log(response.data);
-});
-     }
-     
+  var input = JSON.stringify(ingredient);
+  console.log(input);
+  localStorage.setItem("ingredient", input);
+  console.log(localStorage.getItem("ingredient"));
+  window.location.replace("./result.html");
+};
 
 
-  storeCocktails();
-  formSubmitHandler();
-  cocktailName();
-}
+
+searchButton.on("click", handleSubmit);

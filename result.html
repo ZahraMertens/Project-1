@@ -23,25 +23,36 @@
 
   <main>
 
-  <div class="search-container ">
-    <div class="row">
+  <div class="search-container row">
+    <div class="from-container l4">
+     <div class="row">
       <div class="input-field col l12">
         <input id="autocomplete-input" class="autocomplete" placeholder="Gin">
         <label class="active" for="autocomplete-input">Spirit Type</label>
       </div>
-    </div>
+     </div>
       <div class="row">
         <div class="input-field col l12">
-          <button type="submit" class="waves-effect waves-light btn-large" onclick="searchMechanic()">Search</button>
+          <button type="submit" class="waves-effect waves-light btn-large">Search</button>
+          <button type="button" class="waves-effect waves-light btn-large back-button">Go back</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="result-container row">
+    <div class="result col l8">
+      <ul class="row ul-container">
+
+      </ul>
+    </div>
   </div>
 
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/result.js"></script>
 </body>
 
 </html>
