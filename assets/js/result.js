@@ -1,7 +1,6 @@
 
-var goBack = $(".back-button")
-var ulEl = $(".ul-container");
-var resultContainer = $(".result")
+var goBack = $(".back-button");
+var resultContainer = $(".result");
 var fullContainer = $(".result-container");
 
 //Get local storage to be able to fetch the data
@@ -61,21 +60,32 @@ function displayNames (data, ingredient) {
 		ulEl.text("No Cocktails found!")
 		return;
 	}
+ 
+	var divEl = $("<div class='result row'>");
 
 	fullContainer.addClass("show-container")
-    resultContainer.append("<h1 class='result-header'>Find the Cocktails made with " + ingredient + " below:</h1>")
+    fullContainer.append("<h1 class='result-header'>Find the Cocktails made with " + ingredient + " below:</h1>")
+	fullContainer.append(divEl)
 
 	//random selection
 
-	var names = data.drinks;
-	console.log(names)
-
 	//Trying to access data still struggeling................................
-	//for (var i = 0; i < Names.length; i++){
+	for (var i = 0; i < data.drinks.length; i++){
 		
-		var cocktailName = data.drinks[0].strDrink;
+		var cocktailName = data.drinks[i].strDrink;
+		var cocktailImage = data.drinks[i].strDrinkThumb;
 		console.log(cocktailName);
-	//}
+		//console.log(cocktailImage)
+
+		var imgEl = $("<img class='image-size'>");
+		imgEl.attr("src", cocktailImage);
+
+		var cardEl = $("<div class='card-cocktail col l3'>")
+		cardEl.text(cocktailName);
+		cardEl.append(imgEl)
+
+		divEl.append(cardEl);
+	}
 
 }
 
