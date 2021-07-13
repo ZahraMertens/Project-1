@@ -48,7 +48,6 @@ header {
 main {
     display: flex;
     text-align: center;
-    
 }
 
 .btn-large {
@@ -72,7 +71,6 @@ footer {
 
 .search-container {
     margin: 0px;
-    margin-left: 10px;
     margin-top: 10px;
 }
 
@@ -80,6 +78,17 @@ footer {
     margin: 0px;
 }
 
+.reault-header {
+    margin: 0px;
+}
+
 .show-container {
     background-color: white;
+    margin: 10px;
 }
+
+.result h1 {
+    font-size: 30px;
+    color: black;
+}
+
