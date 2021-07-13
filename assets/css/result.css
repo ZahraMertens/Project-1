@@ -69,3 +69,17 @@ main {
 footer {
     background-color: rgb(238, 113, 190);
 }
+
+.search-container {
+    margin: 0px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.result-container {
+    margin: 0px;
+}
+
+.show-container {
+    background-color: white;
+}
