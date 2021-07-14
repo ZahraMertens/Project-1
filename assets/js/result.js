@@ -157,11 +157,40 @@ function displayRecipe(data){
 
 	console.log(ingredients)
 
-    var filteredIngredients = ingredients.filter(function(value){ 
-        return value > "null";
-    });
+  // Getting rid of null.
 
-	console.log(filteredIngredients)
+	var realIngredients = ingredients.filter(function (e) {return e != null;});
+
+	console.log(realIngredients);
+
+	// Same function for the mesurements
+
+	var measurements = [];
+
+
+
+	var measurement1 = data.drinks[0].strMeasure1;
+	var measurement2 = data.drinks[0].strMeasure2;
+	var measurement3 = data.drinks[0].strMeasure3;
+	var measurement4 = data.drinks[0].strMeasure4;
+	var measurement5 = data.drinks[0].strMeasure5;
+	var measurement6 = data.drinks[0].strMeasure6;
+	var measurement7 = data.drinks[0].strMeasure7;
+	var measurement8 = data.drinks[0].strMeasure8;
+	var measurement9 = data.drinks[0].strMeasure9;
+	var measurement10 = data.drinks[0].strMeasure10;
+
+	measurements.push(measurement1, measurement2, measurement3, measurement4, measurement5, measurement6, measurement7, measurement8, measurement9, measurement10)
+
+	console.log(measurements)
+
+  // Getting rid of null.
+
+	var realMeasurement = measurements.filter(function (e) {return e != null;});
+
+	console.log(realMeasurement);
+	
+	
 
 }
 
