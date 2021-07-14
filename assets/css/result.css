@@ -95,5 +95,44 @@ footer {
     font-weight: bold!important;
 }
 
+/*Modal Styles*/
+
+.modal-header {
+    background-color: rgb(170, 226, 114);
+    border-radius: 20px;
+    border: solid 1px black;
+    padding: 5px;
+}
+
+.ingredients-header {
+    text-decoration: underline;
+}
+
+.div-left {
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+}
+
+.div-right {
+    background-color: rgb(207, 207, 207);
+    border-radius: 20px;
+}
+
+.span-ing {
+    font-weight: bold;
+}
+
+.glass {
+    font-size: 20px;
+}
+
+.instructions-header {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.instructions {
+    font-size: 20px;
+}
 
 
