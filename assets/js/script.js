@@ -10,6 +10,15 @@ let ingredient;
 $(document).ready(function(){
   $('#autocomplete-input').autocomplete({
     data: {
+      Whiskey: null,
+      Vodka: null,
+      Scotch: null,
+      Bourbon:null,
+      Amaretto: null,
+      Gin: null,
+      Rum: null,
+      Cognac: null,
+      Tequila: null,
       //Ingredient lists--TO DO
     }, 
   })

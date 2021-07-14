@@ -1,6 +1,38 @@
 
+//Global variables
+var searchButton = $(".search-button");
 var goBack = $(".back-button");
 var resultContainer = $(".result-container");
+
+
+//If search pressed again clear local storage and set local storage for new search again
+function handleSubmit (event){
+	event.preventDefault();
+  
+	var ingredient = $("#autocomplete-input").val().trim()
+	console.log(ingredient);
+  
+	//If there is an input the function gets executed
+	if (ingredient) {
+		localStorage.clear();
+	    setLocalStorage(ingredient);
+	  $("#autocomplete-input").val("");
+	} // else if (ingredient === undefined){
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Alert?
+		//window.location.replace("./index.html");
+	//}
+};
+
+//Set local stoarge again for search 
+function setLocalStorage (ingredient) {
+  
+	var input = JSON.stringify(ingredient);
+	console.log(input);
+	localStorage.setItem("ingredient", input);
+	console.log(localStorage.getItem("ingredient"));
+	window.location.replace("./result.html");
+};
+
 
 //Get local storage to be able to fetch the data
 function getLocalStorage (){
@@ -17,7 +49,6 @@ function goBackFunction (event){
 
   window.location.replace("./index.html");
 }
-
 
 //Api call to get data 
 function cocktailName(ingredient) {
@@ -38,19 +69,21 @@ function cocktailName(ingredient) {
 		  console.log(response);
 		  response.json().then(function (data) {
 			console.log(data);
+
 			//Display data function
 			displayNames(data, ingredient);
-			
+		
 		  });
 		} else {
-		  alert('Error: ' + response.statusText);
+		   alert('Error: ' + response.statusText);
 		}
 	  })
 	  .catch(function (error) {
-		alert('City does not exist!')
+		alert('Spririt not found')
 	})
 
 };
+
 
 //Display data function
 function displayNames (data) {
@@ -132,6 +165,8 @@ function getInstructions(id){
 
 }
 
+
+
 function displayRecipe(data){
 
 	var drinkName = data.drinks[0].strDrink;
@@ -181,6 +216,8 @@ function displayRecipe(data){
 	$(".modal-header").text(drinkName + " Recipe");
 	$(".img-modal").attr("src", imgModal);
 	$(".ingredients-header").text("List of ingredients:")
+
+	$(".modal-ul").remove();
 	$(".modal-div").append("<ul class='modal-ul'></ul>")
 
 	for (var i = 0;i <realMeasurement.length; i++){
@@ -192,79 +229,17 @@ function displayRecipe(data){
 	$(".instructions-header").text("Method:")
 	$(".instructions").text(instructions)
 
-
-	//Remove content on click
-	$("#modal1").on("click", ".modal-close", removeModal)
-	
 }
 
-//Not working
-function removeModal (event) {
-	event.preventDefault();
-
-	$(".modal-li").remove();
-}
-
-resultContainer.on("click", ".material-icons", getID);
 
 //get local storage function
 getLocalStorage();
 
+//Get Modal content on click of red button of card
+resultContainer.on("click", ".material-icons", getID);
+
 //Go back button
 goBack.on("click", goBackFunction);
 
-//searchButton.on("click", handleSubmit);
-
-
-
-
-
-
-/*if (ingredient1 !== null || measurement1 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient1 + ": " + measurement1 + "</li>")
-
-	} 
-	
-	if (ingredient2 !== null || measurement2 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient2 + ": " + measurement2 + "</li>")
-
-	}
-	
-	if (ingredient3 !== null || measurement3 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient3 + ": " + measurement3 + "</li>")
-
-	} 
-	
-	if (ingredient4 !== null || measurement4 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient4 + ": " + measurement4 + "</li>")
-
-	}
-	
-	if (ingredient5 !== null || measurement5 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient5 + ": " + measurement5 + "</li>")
-
-	} 
-	
-	if (ingredient6 !== null || measurement6 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient6 + ": " + measurement6 + "</li>")
-
-	} 
-	
-	if (ingredient7 !== null || measurement7 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient7 + ": " + measurement7 + "</li>")
-
-	} 
-	
-	if (ingredient8 !== null || measurement8 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient8 + ": " + measurement8 + "</li>")
-
-	} 
-	
-	if (ingredient9 !== null || measurement9 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient9 + ": " + measurement9 + "</li>")
-		
-	}
-	
-	if (ingredient10 !== null || measurement10 !== null){
-		$(".modal-ul").append("<li class='modal-li'>" + ingredient10 + ": " + measurement10 + "</li>")
-	};*/
+//Search Button... Set local storage again
+searchButton.on("click", handleSubmit);
