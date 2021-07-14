@@ -53,7 +53,7 @@ function cocktailName(ingredient) {
 };
 
 //Display data function
-function displayNames (data, ingredient) {
+function displayNames (data) {
 	
 	if (data.length === 0) {
 		ulEl.text("No Cocktails found!")
@@ -71,7 +71,6 @@ function displayNames (data, ingredient) {
 		var cocktailName = data.drinks[i].strDrink;
 		var cocktailImage = data.drinks[i].strDrinkThumb;
 		var cocktailID = data.drinks[i].idDrink;
-		console.log(cocktailID);
 
 		rowDiv.append(
 			`<div class="col s12 m6 l3">
@@ -136,11 +135,11 @@ function getInstructions(id){
 function displayRecipe(data){
 
 	var drinkName = data.drinks[0].strDrink;
-	console.log(drinkName)
 	var glass = data.drinks[0].strGlass;
-	console.log(glass);
-
+	var instructions = data.drinks[0].strInstructions;
+	var imgModal = data.drinks[0].strDrinkThumb;
     var ingredients = [];
+	var measurements = [];
 
 	var ingredient1 = data.drinks[0].strIngredient1;
 	var ingredient2 = data.drinks[0].strIngredient2;
@@ -155,20 +154,11 @@ function displayRecipe(data){
 
 	ingredients.push(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, ingredient10)
 
-	console.log(ingredients)
-
-  // Getting rid of null.
-
+    // Getting rid of null.
 	var realIngredients = ingredients.filter(function (e) {return e != null;});
-
 	console.log(realIngredients);
 
 	// Same function for the mesurements
-
-	var measurements = [];
-
-
-
 	var measurement1 = data.drinks[0].strMeasure1;
 	var measurement2 = data.drinks[0].strMeasure2;
 	var measurement3 = data.drinks[0].strMeasure3;
@@ -180,21 +170,40 @@ function displayRecipe(data){
 	var measurement9 = data.drinks[0].strMeasure9;
 	var measurement10 = data.drinks[0].strMeasure10;
 
-	measurements.push(measurement1, measurement2, measurement3, measurement4, measurement5, measurement6, measurement7, measurement8, measurement9, measurement10)
+	measurements.push(measurement1, measurement2, measurement3, measurement4, measurement5, measurement6, measurement7, measurement8, measurement9, measurement10);
 
-	console.log(measurements)
-
-  // Getting rid of null.
-
+    // Getting rid of null.
 	var realMeasurement = measurements.filter(function (e) {return e != null;});
-
 	console.log(realMeasurement);
-	
-	
 
+
+	//Append content to modal
+	$(".modal-header").text(drinkName + " Recipe");
+	$(".img-modal").attr("src", imgModal);
+	$(".ingredients-header").text("List of ingredients:")
+	$(".modal-div").append("<ul class='modal-ul'></ul>")
+
+	for (var i = 0;i <realMeasurement.length; i++){
+
+		$(".modal-ul").append("<li class='modal-li'><span class='span-ing'>" + realIngredients[i] + "</span> " + realMeasurement[i] + "</li>")
+	}
+
+	$(".glass").text("Glass used: " + glass)
+	$(".instructions-header").text("Method:")
+	$(".instructions").text(instructions)
+
+
+	//Remove content on click
+	$("#modal1").on("click", ".modal-close", removeModal)
+	
 }
 
+//Not working
+function removeModal (event) {
+	event.preventDefault();
 
+	$(".modal-li").remove();
+}
 
 resultContainer.on("click", ".material-icons", getID);
 
@@ -203,5 +212,59 @@ getLocalStorage();
 
 //Go back button
 goBack.on("click", goBackFunction);
+
 //searchButton.on("click", handleSubmit);
 
+
+
+
+
+
+/*if (ingredient1 !== null || measurement1 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient1 + ": " + measurement1 + "</li>")
+
+	} 
+	
+	if (ingredient2 !== null || measurement2 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient2 + ": " + measurement2 + "</li>")
+
+	}
+	
+	if (ingredient3 !== null || measurement3 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient3 + ": " + measurement3 + "</li>")
+
+	} 
+	
+	if (ingredient4 !== null || measurement4 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient4 + ": " + measurement4 + "</li>")
+
+	}
+	
+	if (ingredient5 !== null || measurement5 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient5 + ": " + measurement5 + "</li>")
+
+	} 
+	
+	if (ingredient6 !== null || measurement6 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient6 + ": " + measurement6 + "</li>")
+
+	} 
+	
+	if (ingredient7 !== null || measurement7 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient7 + ": " + measurement7 + "</li>")
+
+	} 
+	
+	if (ingredient8 !== null || measurement8 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient8 + ": " + measurement8 + "</li>")
+
+	} 
+	
+	if (ingredient9 !== null || measurement9 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient9 + ": " + measurement9 + "</li>")
+		
+	}
+	
+	if (ingredient10 !== null || measurement10 !== null){
+		$(".modal-ul").append("<li class='modal-li'>" + ingredient10 + ": " + measurement10 + "</li>")
+	};*/
