@@ -1,0 +1,46 @@
+body {
+    height: 100%;
+    box-sizing: border-box;
+    background-image: url(../images/error1.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+}
+
+.app-title {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 30px;
+    margin: auto;
+    color: rgb(0, 0, 0);
+    display: block;
+    
+}
+
+.span-title {
+    font-weight: bolder;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+    color: #000000;
+    background-image: linear-gradient(to right, rgb(255, 221, 110) , rgb(191, 255, 131), green);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 15px;
+}
+
+.app-subheader {
+    font-size: 25px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: auto;
+    color: rgb(88, 88, 88);
+    display: block;
+}
