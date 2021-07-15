@@ -228,7 +228,6 @@ function displayRecipe(data){
 	$(".glass").text("Glass used: " + glass)
 	$(".instructions-header").text("Method:")
 	$(".instructions").text(instructions)
-
 }
 
 
