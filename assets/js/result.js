@@ -17,10 +17,7 @@ function handleSubmit (event){
 		localStorage.clear();
 	    setLocalStorage(ingredient);
 	  $("#autocomplete-input").val("");
-	} // else if (ingredient === undefined){
-		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Alert?
-		//window.location.replace("./index.html");
-	//}
+	} 
 };
 
 //Set local stoarge again for search 
@@ -70,16 +67,24 @@ function cocktailName(ingredient) {
 		  response.json().then(function (data) {
 			console.log(data);
 
+            var resData = data.drinks[0];
+			console.log(resData)
+
+			if (resData === "N"){
+			  $(".search-container").append("<h1 class='show-error'>Spirit does not exist</h1>") 
+
+			} else {	
 			//Display data function
 			displayNames(data, ingredient);
-		
+			}
+		    
 		  });
 		} else {
-		   alert('Error: ' + response.statusText);
+			window.location.replace("./error.html");
 		}
 	  })
 	  .catch(function (error) {
-		alert('Spririt not found')
+		window.location.replace("./error.html");
 	})
 
 };
@@ -153,14 +158,14 @@ function getInstructions(id){
 			response.json().then(function (data) {
 				console.log(data);
 				displayRecipe(data);
-				
+
 			});
 			} else {
-			alert('Error: ' + response.statusText);
+				window.location.replace("./error.html");
 			}
 		})
 		.catch(function (error) {
-			alert('Cocktail')
+			window.location.replace("./error.html");
 		})
 
 }

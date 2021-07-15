@@ -1,9 +1,7 @@
 
 var searchButton = $(".search-button");
-var inputIngredients; //= document.getElementById("autocomplete-input").value;
+var inputIngredients; 
 var nameInput = $("#name");
-var listCocktails = [];
-let ingredient;
 
 //Autocomplete dropdown for ingredients
 
@@ -19,7 +17,7 @@ $(document).ready(function(){
       Rum: null,
       Cognac: null,
       Tequila: null,
-      //Ingredient lists--TO DO
+      //Ingredient lists
     }, 
   })
 });
@@ -36,8 +34,6 @@ function handleSubmit (event){
   if (ingredient) {
     setLocalStorage(ingredient);
     $("#autocomplete-input").val("");
-  } else {
-    //modal ingredient not found
   }
 };
 

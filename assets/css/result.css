@@ -54,6 +54,10 @@ main {
     background-color: rgb(214, 16, 16);
 }
 
+.show-error {
+     background-color: blanchedalmond;
+}
+
 .search-container {
     margin-top: 20px;
     padding: 20px;
