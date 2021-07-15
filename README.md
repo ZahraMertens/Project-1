@@ -1,27 +1,28 @@
-## General Information
+# CocktailHUB
+## Your one stop shop for all things cocktail
 
-```
-As a user I want to find cocktail recipes depending on their ingredient types So that I can make cocktails.
+## Intro
+Hi there, and welcome to CocktailHUB! Here, you can access a database of all sorts of different cocktails with one simple search!
+Wanting to try something new in lockdown but not sure how to make it? We have the solution for you!
 
-```
-## Brainstorming
+## Description
+CocktailHUB is our interface for accessing the cocktail database API, It makes finding recipes for cocktails quick and easy, and is the center point for those looking to try out new drinks. 
 
-* HTML page which includes a search bar to search an ingredient for said cocktail
-* A second HTML page will show the first 10 results, with a next button to load the next 10 results
-* Clicking on an item presents the user with a recipe for the selected item
-* POSSIBLE EXTENSION: youtube video embedding for how to make
+We built this project to help satisfy the curiousities of our users and ourselves while Covid keeps us from going out and having fun. Through this experience, we learnt the importance of properly researching an API before implementing it into our designs, and honed our skills in the implementation of API intregration into a website
 
-## Acceptance Criteria
+## Usage
+Using our website is easy! Simply type the name of a kind of spirit into the search bar and press search. The following webpage will present your with a variety of different cocktail options. Once you've found a cocktail to your liking, click on the plus symbol on the name card of the cocktail, and you will be presented with ingredients and instructions on how to create your selected cocktail.
 
-* WHEN the page loads, I am presented with a search bar prompting a particular ingredient, and a button
-* WHEN the search field is filled and the button pressed, the HTML page will change to the results page showing the top results from the list
-* WHEN the user clicks on an item in said list, they are presented with a recipe for the item
-* EXTENSION: When the user clicks on the item, they are presented with a recipe AND a youtube video describing process
+Go out there and have fun!
 
-## Framework used 
+## Frameworks used
 
 * materialize
 * jQuery 
 * Google Fonts 
 
-## 
+## API used:
+The Cocktail Database: https://rapidapi.com/thecocktaildb/api/the-cocktail-db
+
+## Link
+Use this link to access our website: https://zahramertens.github.io/Project-1/
