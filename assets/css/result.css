@@ -54,8 +54,16 @@ main {
     background-color: rgb(214, 16, 16);
 }
 
-.show-error {
-     background-color: blanchedalmond;
+.error-result {
+    background-color: rgb(255, 255, 255);
+    margin: 10px!important;
+    border-radius: 15px;
+    opacity: 0.8;
+}
+
+.error-header {
+    font-size: 30px;
+    font-weight: bolder;
 }
 
 .search-container {
@@ -97,11 +105,14 @@ footer {
 }
 
 .cocktail-title {
-    font-size: 13px!important;
+    font-size: 15px!important;
     font-weight: bold!important;
 }
 
-
+.card-content {
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
 
 /*Modal Styles*/
 
@@ -143,4 +154,77 @@ footer {
     font-size: 20px;
 }
 
+@media screen and (max-width:1400px){
+    .cocktail-title {
+        font-size: 15px!important;
+        font-weight: bold!important;
+    }
+
+}
+
+@media screen and (max-width:1047px){
+
+    .search-container {
+        height: 280px;
+    }
+
+    .cocktail-title {
+        font-size: 12px!important;
+        font-weight: bold!important;
+    }
+
+}
+
+@media screen and (max-width:724px){
+    .back-button {
+        font-size: 11px;
+        margin-top: 5px;
+    }
+
+    .search-button {
+        font-size: 13px;
+    }
+
+    .search-container {
+        height: 260px;
+    }
+
+    .cocktail-title {
+        font-size: 10px!important;
+        font-weight: bold!important;
+    }
+
+    .card-content {
+        padding: 0px!important;
+        padding-top: 24px!important;
+    }
+}
+
+@media screen and (max-width:382px){
+    .app-title {
+        font-size: 35px;
+    }
+    
+    .span-title {
+        font-size: 35px;
+    }
+    
+    .app-subheader {
+        font-size: 20px;
+    }
+
+    .search-button {
+        font-size: 10px;
+    }
+
+    .back-button {
+        font-size: 8px;
+    }
+
+    .error-header {
+        font-size: 20px;
+        font-weight: bolder;
+    }
+
+}
 

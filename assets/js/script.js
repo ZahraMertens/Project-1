@@ -1,10 +1,9 @@
 
 var searchButton = $(".search-button");
-var inputIngredients; 
 var nameInput = $("#name");
 
-//Autocomplete dropdown for ingredients
 
+//Autocomplete dropdown for ingredients
 $(document).ready(function(){
   $('#autocomplete-input').autocomplete({
     data: {
@@ -37,7 +36,7 @@ function handleSubmit (event){
   }
 };
 
-//Set local storage
+//Set local storage to store input
 function setLocalStorage (ingredient) {
   
   var input = JSON.stringify(ingredient);
