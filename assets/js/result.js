@@ -1,5 +1,4 @@
 
-//Global variables
 var searchButton = $(".search-button");
 var goBack = $(".back-button");
 var resultContainer = $(".result-container");
@@ -71,7 +70,8 @@ function cocktailName(ingredient) {
 			console.log(resData)
 
 			if (resData === "N"){
-			  $(".search-container").append("<h1 class='show-error'>Spirit does not exist</h1>") 
+				resultContainer.addClass("error-result")
+			  resultContainer.append("<h1 class='error-header'>Spirit does not exist</h1>") 
 
 			} else {	
 			//Display data function
@@ -98,12 +98,9 @@ function displayNames (data) {
 		return;
 	}
  
-	var divEl = $("<div class='result row'>");
-
 	var rowDiv = $("<div class='row'>");
 	resultContainer.append(rowDiv);
 
-	//Trying to access data still struggeling................................
 	for (var i = 0; i < data.drinks.length; i++){
 		
 		var cocktailName = data.drinks[i].strDrink;
@@ -111,7 +108,7 @@ function displayNames (data) {
 		var cocktailID = data.drinks[i].idDrink;
 
 		rowDiv.append(
-			`<div class="col s12 m6 l3">
+			`<div class="col s12 m6 l6 xl3">
 			   <div class="card">
 			     <div class="card-image">
 				   <img src="${cocktailImage}">
@@ -166,8 +163,7 @@ function getInstructions(id){
 		})
 		.catch(function (error) {
 			window.location.replace("./error.html");
-		})
-
+		});
 }
 
 
@@ -236,13 +232,11 @@ function displayRecipe(data){
 }
 
 
-//get local storage function
 getLocalStorage();
 
 //Get Modal content on click of red button of card
 resultContainer.on("click", ".material-icons", getID);
 
-//Go back button
 goBack.on("click", goBackFunction);
 
 //Search Button... Set local storage again
