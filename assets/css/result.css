@@ -50,10 +50,40 @@ main {
     text-align: center;
 }
 
+/*Search container*/
+.search-container {
+    margin: 0px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    float: left;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: aliceblue;
+    height: 200px; 
+}
+
+.input-field {
+    margin-top: 40px;
+}
+
 .btn-large {
     background-color: rgb(214, 16, 16);
 }
 
+/*Cards*/
+.card-content {
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
+
+.cocktail-title {
+    font-size: 15px!important;
+    font-weight: bold!important;
+}
+
+/*Error container*/
 .error-result {
     background-color: rgb(255, 255, 255);
     margin: 10px!important;
@@ -66,56 +96,7 @@ main {
     font-weight: bolder;
 }
 
-.search-container {
-    margin-top: 20px;
-    padding: 20px;
-    margin-left: 20px;
-    float: left;
-    text-align: center;
-    border-radius: 15px;
-    border: 1px solid black;
-    background-color: aliceblue;
-    height: 200px;
-}
-
-.input-field {
-    margin-top: 40px;
-}
-
-footer {
-    background-color: rgb(238, 113, 190);
-}
-
-.search-container {
-    margin: 0px;
-    margin-top: 10px;
-}
-
-.result-container {
-    margin: 0px;
-}
-
-.reault-header {
-    margin: 0px;
-}
-
-.result h1 {
-    font-size: 30px;
-    color: black;
-}
-
-.cocktail-title {
-    font-size: 15px!important;
-    font-weight: bold!important;
-}
-
-.card-content {
-    padding-left: 0px!important;
-    padding-right: 0px!important;
-}
-
 /*Modal Styles*/
-
 .modal-header {
     background-color: rgb(170, 226, 114);
     border-radius: 20px;
@@ -154,9 +135,11 @@ footer {
     font-size: 20px;
 }
 
+
+
 @media screen and (max-width:1400px){
     .cocktail-title {
-        font-size: 15px!important;
+        font-size: 13px!important;
         font-weight: bold!important;
     }
 
@@ -225,6 +208,5 @@ footer {
         font-size: 20px;
         font-weight: bolder;
     }
-
 }
 

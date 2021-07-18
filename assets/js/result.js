@@ -8,8 +8,8 @@ var resultContainer = $(".result-container");
 function handleSubmit (event){
 	event.preventDefault();
   
+	//Get user input
 	var ingredient = $("#autocomplete-input").val().trim()
-	console.log(ingredient);
   
 	//If there is an input the function gets executed
 	if (ingredient) {
@@ -23,9 +23,9 @@ function handleSubmit (event){
 function setLocalStorage (ingredient) {
   
 	var input = JSON.stringify(ingredient);
-	console.log(input);
+	
 	localStorage.setItem("ingredient", input);
-	console.log(localStorage.getItem("ingredient"));
+	
 	window.location.replace("./result.html");
 };
 
@@ -35,7 +35,7 @@ function getLocalStorage (){
 
 	var ingredient = localStorage.getItem("ingredient");
 	ingredient = JSON.parse(ingredient);
-    console.log(ingredient);
+    
 	cocktailName(ingredient);
 }
 
@@ -66,25 +66,25 @@ function cocktailName(ingredient) {
 		  response.json().then(function (data) {
 			console.log(data);
 
+			//Check if valid data is found
             var resData = data.drinks[0];
-			console.log(resData)
 
 			if (resData === "N"){
 				resultContainer.addClass("error-result")
-			  resultContainer.append("<h1 class='error-header'>Spirit does not exist</h1>") 
+			    resultContainer.append("<h1 class='error-header'>Spirit does not exist</h1>") 
 
 			} else {	
-			//Display data function
+			//If data retrun is valid data gets displayed
 			displayNames(data, ingredient);
 			}
 		    
 		  });
 		} else {
-			window.location.replace("./error.html");
+			window.location.replace("./error.html"); //If error with Api go to error html
 		}
 	  })
 	  .catch(function (error) {
-		window.location.replace("./error.html");
+		window.location.replace("./error.html"); //If error with Api go to error html
 	})
 
 };
@@ -94,7 +94,8 @@ function cocktailName(ingredient) {
 function displayNames (data) {
 	
 	if (data.length === 0) {
-		ulEl.text("No Cocktails found!")
+		resultContainer.addClass("error-result")
+	    resultContainer.append("<h1 class='error-header'>Cocktail does not exist</h1>") 
 		return;
 	}
  
@@ -126,8 +127,8 @@ function displayNames (data) {
 function getID (event){
 	event.preventDefault();
 
+	//Get id from drink for modal
 	var id = $(event.target).data("value");
-	console.log(id);
 
     $('.modal').modal(); 
 
@@ -151,18 +152,18 @@ function getInstructions(id){
 
 		.then(function (response) {
 			if (response.ok) {
-			console.log(response);
+
 			response.json().then(function (data) {
 				console.log(data);
 				displayRecipe(data);
 
 			});
 			} else {
-				window.location.replace("./error.html");
+				window.location.replace("./error.html"); //If error with API go to error page
 			}
 		})
 		.catch(function (error) {
-			window.location.replace("./error.html");
+			window.location.replace("./error.html"); //If error with API go to error page
 		});
 }
 
@@ -170,6 +171,7 @@ function getInstructions(id){
 
 function displayRecipe(data){
 
+	//Getting content used in the modal
 	var drinkName = data.drinks[0].strDrink;
 	var glass = data.drinks[0].strGlass;
 	var instructions = data.drinks[0].strInstructions;
@@ -177,6 +179,7 @@ function displayRecipe(data){
     var ingredients = [];
 	var measurements = [];
 
+	//Getting ingredients from API
 	var ingredient1 = data.drinks[0].strIngredient1;
 	var ingredient2 = data.drinks[0].strIngredient2;
 	var ingredient3 = data.drinks[0].strIngredient3;
@@ -188,13 +191,14 @@ function displayRecipe(data){
 	var ingredient9 = data.drinks[0].strIngredient9;
 	var ingredient10 = data.drinks[0].strIngredient10;
 
+	//Push ingredients in array
 	ingredients.push(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, ingredient10)
 
-    // Getting rid of null.
+    // If ingredient[i] is null the value and key gets removed
 	var realIngredients = ingredients.filter(function (e) {return e != null;});
-	console.log(realIngredients);
 
-	// Same function for the mesurements
+
+	// Getting measurements for ingredients
 	var measurement1 = data.drinks[0].strMeasure1;
 	var measurement2 = data.drinks[0].strMeasure2;
 	var measurement3 = data.drinks[0].strMeasure3;
@@ -206,11 +210,11 @@ function displayRecipe(data){
 	var measurement9 = data.drinks[0].strMeasure9;
 	var measurement10 = data.drinks[0].strMeasure10;
 
+	//Push measurements in array
 	measurements.push(measurement1, measurement2, measurement3, measurement4, measurement5, measurement6, measurement7, measurement8, measurement9, measurement10);
 
-    // Getting rid of null.
+    // If measurement[i] is null the value and key gets removed
 	var realMeasurement = measurements.filter(function (e) {return e != null;});
-	console.log(realMeasurement);
 
 
 	//Append content to modal
@@ -218,7 +222,7 @@ function displayRecipe(data){
 	$(".img-modal").attr("src", imgModal);
 	$(".ingredients-header").text("List of ingredients:")
 
-	$(".modal-ul").remove();
+	$(".modal-ul").remove(); //Remove method in case of previous content
 	$(".modal-div").append("<ul class='modal-ul'></ul>")
 
 	for (var i = 0;i <realMeasurement.length; i++){
