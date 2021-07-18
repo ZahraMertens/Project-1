@@ -3,7 +3,7 @@ var searchButton = $(".search-button");
 var nameInput = $("#name");
 
 
-//Autocomplete dropdown for ingredients
+//Autocomplete dropdown for possible spirits
 $(document).ready(function(){
   $('#autocomplete-input').autocomplete({
     data: {
@@ -16,7 +16,9 @@ $(document).ready(function(){
       Rum: null,
       Cognac: null,
       Tequila: null,
-      //Ingredient lists
+      Mezcal: null,
+      Brandy: null,
+      Absinthe: null,
     }, 
   })
 });
@@ -29,10 +31,10 @@ function handleSubmit (event){
   var ingredient = $("#autocomplete-input").val().trim()
   console.log(ingredient);
 
-  //If there is an input the function gets executed
+  //If there is an input it will be stored in the local storae in the next function
   if (ingredient) {
     setLocalStorage(ingredient);
-    $("#autocomplete-input").val("");
+    $("#autocomplete-input").val(""); //Remove input
   }
 };
 
